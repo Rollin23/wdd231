@@ -16,7 +16,7 @@ function parkInfoTemplate(info) {
 
 document.title = parkData.fullName;
 
-const heroImage = document.querySelector(".hero-banner Img");
+const heroImage = document.querySelector(".hero-banner img");
 heroImage.src = parkData.images[0].url;
 heroImage.alt = parkData.images[0].altText;
 
