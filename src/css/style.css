@@ -225,7 +225,7 @@ a:hover {
   z-index: 9999;
 }
 
-/* Title and logo styling */
+
 
 .site-title {
   display: flex;
@@ -246,7 +246,7 @@ a:hover {
   border-right: 13px solid transparent;
 }
 
-/* Utility styles */
+
 
 .visually-hidden {
   position: absolute;
@@ -264,4 +264,124 @@ a:hover {
 svg {
   background-color: var(--bs-black);
   fill: white;
+}
+
+
+
+.intro {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+
+
+.info {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+
+
+.media-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.media-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.media-card a:hover h3 {
+  text-decoration: underline;
+}
+
+.media-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+
+
+.park-footer {
+  background-image: url("images/footer-bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+  color: black;
+  background-color: #f4f1ea;
+  padding: 3rem 1rem;
+}
+
+.park-footer .contact {
+  max-width: 900px;
+  margin: 0;          
+  text-align: left;  
+  padding-left: 1rem; 
+}
+
+.park-footer h3,
+.park-footer h4 {
+  margin-top: 1rem;
+}
+
+.park-footer p {
+  margin: 0.25rem 0;
+}
+
+@media (min-width: 768px) {
+
+  .intro {
+    margin: 3rem auto;
+  }
+
+  .intro h1 {
+    font-size: 2.4rem;
+  }
+
+  .intro p {
+    font-size: 1.05rem;
+    max-width: 800px;
+  }
+
+  .info {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .media-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .park-footer {
+    padding: 4rem 2rem;
+  }
+
+  .park-footer .contact {
+    max-width: 1000px;
+  }
 }
