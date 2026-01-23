@@ -19,12 +19,12 @@ function setParkInfoLinks(data) {
   infoEl.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
-function setContactSection(data) {
-  const mainEl = document.querySelector(".park-footer");
-  mainEl.insertAdjacentHTML("beforeend", contactTemplate(data));
+async function init() {
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(links);
 }
 
-setHeaderFooter(parkData);
-setParkIntro(parkData);
-setParkInfoLinks(parkInfoLinks);
-setContactSection(parkData); 
+init();
