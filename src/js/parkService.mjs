@@ -179,7 +179,7 @@ const park = {
   designation: "National Park"
 };
 
-export const parkInfoLinks = [
+const parkInfoLinks = [
   {
     name: "Current Conditions ›",
     link: "conditions.html",
@@ -201,7 +201,32 @@ export const parkInfoLinks = [
   }
 ];
 
+export function getInfoLinks(data) {
+  // Why index + 2 below? no real reason. we don't want index 0 since that is the one we used for the banner...I decided to skip an image.
+  const withUpdatedImages = parkInfoLinks.map((item, index) => {
+    item.image = data[index + 2].url;
+    return item;
+  });
+  return withUpdatedImages;
+}
 
-export function getParkData() {
-  return park;
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+
+export async function getParkData() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok");
+  // return just the first row of the data object
+  return data.data[0];
 }
