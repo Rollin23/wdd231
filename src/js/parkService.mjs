@@ -220,6 +220,7 @@ export async function getParkData() {
       "X-Api-Key": apiKey
     }
   };
+
   let data = {};
   const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
   // check to make sure the reponse was ok.
@@ -227,6 +228,6 @@ export async function getParkData() {
     // convert to JSON
     data = await response.json();
   } else throw new Error("response not ok");
-  // return just the first row of the data object
+  console.error("Failed to load park data:", err);
   return data.data[0];
 }
