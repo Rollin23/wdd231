@@ -178,7 +178,6 @@ const park = {
   name: "Yellowstone",
   designation: "National Park"
 };
-
 const parkInfoLinks = [
   {
     name: "Current Conditions &#x203A;",
