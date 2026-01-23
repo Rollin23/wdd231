@@ -1,31 +1,39 @@
-
-export function mediaCardTemplate(link) {
-  return `
-    <div class="media-card">
-      <img src="${link.image}" alt="${link.name}">
-      <h3>${link.name}</h3>
-      <p>${link.description}</p>
-    </div>
-  `;
+export function parkInfoTemplate(info) {
+  return `<a href="/" class="hero-banner__title">${info.name}</a>
+    <p class="hero-banner__subtitle">
+      <span>${info.designation}</span>
+      <span>${info.states}</span>
+    </p>`;
 }
 
-export function contactTemplate(data) {
-  const mailing = data.addresses.find(a => a.type === "Mailing");
-  const phone = data.contacts.phoneNumbers.find(n => n.type === "Voice")?.phoneNumber ?? "N/A";
-  const email = data.contacts.emailAddresses[0]?.emailAddress ?? "N/A";
+export function mediaCardTemplate(info) {
+  return `<div class="media-card">
+    <a href="${info.link}">
+    <img src="${info.image}" alt="${info.name}" class="media-card__img">
+    <h3 class="media-card__title">${info.name}</h3>
+    </a>
+   <p>${info.description}</p>
+     </div>`;
+}
+function getMailingAddress(addresses) {
+  const mailing = addresses.find((address) => address.type === "Mailing");
+  return mailing;
+}
+function getVoicePhone(numbers) {
+  const voice = numbers.find((number) => number.type === "Voice");
+  return voice.phoneNumber;
+}
+export function footerTemplate(info) {
+  const mailing = getMailingAddress(info.addresses);
+  const voice = getVoicePhone(info.contacts.phoneNumbers);
 
-  return `
-    <section class="contact">
-      <h2>CONTACT INFO</h2>
-      <h3>Mailing Address:</h3>
-      <p>${mailing ? mailing.line1 : "N/A"}</p>
-      <p>${mailing ? `${mailing.city}, ${mailing.stateCode} ${mailing.postalCode}` : ""}</p>
-
-      <h3>Phone:</h3>
-      <p>${phone}</p>
-
-      <h3>Email:</h3>
-      <p>${email}</p>
-    </section>
-  `;
+  return `<section class="contact">
+    <h3>Contact Info</h3>
+    <h4>Mailing Address:</h4>
+    <div><p>${mailing.line1}<p>
+    <p>${mailing.city}, ${mailing.stateCode} ${mailing.postalCode}</p></div>
+    <h4>Phone:</h4>
+    <p>${voice}</p>
+  </section>
+    `;
 }
