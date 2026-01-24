@@ -1,0 +1,15 @@
+:root {
+  --black: #000;
+  --white: #fff;
+
+  --grey-dark: #333;
+  --grey-mid: #444;
+  --grey-light: #ccc;
+
+  --light-green: #eaf0dc;
+
+  --link-color: #005999;
+  --link-hover-color: #003e6b;
+
+  --body-font: Helvetica Neue, Helvetica, Arial, sans-serif;
+}

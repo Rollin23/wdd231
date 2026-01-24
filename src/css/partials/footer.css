@@ -1,0 +1,18 @@
+.park-footer {
+  background: #f4f1ea url("images/footer-bg.jpg") center / cover;
+  padding: 3rem 1rem;
+}
+
+.park-footer .contact {
+  max-width: 900px;
+  padding-left: 1rem;
+}
+
+.park-footer h3,
+.park-footer h4 {
+  margin-top: 1rem;
+}
+
+.park-footer p {
+  margin: 0.25rem 0;
+}

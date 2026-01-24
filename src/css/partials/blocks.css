@@ -1,0 +1,66 @@
+/* Park Navigation */
+.park-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background: var(--black);
+  font-size: 0.8rem;
+}
+
+.park-nav a {
+  padding: 0.8em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.park-nav a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.park-nav svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Intro + Info Sections */
+.intro,
+.info {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.intro h1 {
+  font-size: 2rem;
+}
+
+.intro p {
+  line-height: 1.6;
+}
+
+.info {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Media Cards */
+.media-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.media-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.media-card a {
+  color: var(--black);
+}
+
+.media-card a:hover h3 {
+  text-decoration: underline;
+}
