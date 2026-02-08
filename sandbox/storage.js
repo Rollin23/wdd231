@@ -1,5 +1,18 @@
-// storage.js
 let tasks = [];
+
+function setLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getLocalStorage(key) {
+  const storedValue = localStorage.getItem(key);
+  // check to see if something was found
+  if (storedValue) {
+    return JSON.parse(storedValue);
+  }
+  // if not return an empty array
+  return [];
+}
 
 function taskTemplate(task) {
   return `
@@ -9,7 +22,7 @@ function taskTemplate(task) {
         <span data-action="delete">❎</span>
         <span data-action="complete">✅</span>
       </div>
-    </li>`
+    </li>`;
 }
 
 function renderTasks(tasks) {
@@ -26,6 +39,8 @@ function newTask() {
   const task = document.querySelector("#todo").value;
   // add it to our arrays tasks
   tasks.push({ detail: task, completed: false });
+  // SAVE the tasks array to local storage
+  setLocalStorage("todos", tasks);
   // render out the list
   renderTasks(tasks);
 }
@@ -34,18 +49,22 @@ function removeTask(taskElement) {
   // Notice how we are using taskElement instead of document as our starting point?
   // This will restrict our search to the element instead of searching the whole document.
   tasks = tasks.filter(
-    (task) => task.detail != taskElement.querySelector('p').innerText
+    (task) => task.detail != taskElement.querySelector("p").innerText
   );
   taskElement.remove();
+  // UPDATE localStorage with the changes
+  setLocalStorage("todos", tasks);
 }
 
 function completeTask(taskElement) {
   const taskIndex = tasks.findIndex(
-    (task) => task.detail === taskElement.querySelector('p').innerText
+    (task) => task.detail === taskElement.querySelector("p").innerText
   );
   tasks[taskIndex].completed = tasks[taskIndex].completed ? false : true;
   taskElement.classList.toggle("strike");
   console.log(tasks);
+  // UPDATE localStorage with the changes
+  setLocalStorage("todos", tasks);
 }
 
 function manageTasks(e) {
@@ -59,9 +78,6 @@ function manageTasks(e) {
     completeTask(parent);
   }
 }
-// render  the initial list of tasks (if any) when the page loads
-renderTasks(tasks);
-
 function setUserName() {
   const name = localStorage.getItem("todo-user");
   if (name) {
@@ -74,13 +90,20 @@ function userNameHandler() {
   setUserName();
 }
 
-document
-  .querySelector("#userNameButton")
-  .addEventListener("click", userNameHandler);
-
+function init() {
+  // see if there are any tasks in localStorage
+  tasks = getLocalStorage("todos");
+  // render  the initial list of tasks (if any) when the page loads
+  renderTasks(tasks);
   // check to see if a user name has been set...if yes then set it in the header
-setUserName();
+  setUserName();
+}
 
 // Add your event listeners here
 document.querySelector("#submitTask").addEventListener("click", newTask);
 document.querySelector("#todoList").addEventListener("click", manageTasks);
+document
+  .querySelector("#userNameButton")
+  .addEventListener("click", userNameHandler);
+
+init();
