@@ -1,66 +1,37 @@
-/* Park Navigation */
-.park-nav ul {
-  list-style: none;
+
+.skip-links ul {
+  list-style-type: none;
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  background: var(--black);
-  font-size: 0.8rem;
+  padding-left: 0;
 }
 
-.park-nav a {
-  padding: 0.8em 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.skip-links a {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  position: absolute;
+  right: 20px;
+  top: -200px;
+  z-index: -1;
 }
 
-.park-nav a:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.park-nav svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Intro + Info Sections */
-.intro,
-.info {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.intro h1 {
-  font-size: 2rem;
-}
-
-.intro p {
-  line-height: 1.6;
-}
-
-.info {
-  display: grid;
-  gap: 2rem;
-}
-
-/* Media Cards */
-.media-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-.media-card p {
-  margin: 0;
-  line-height: 1.5;
+.skip-links a:focus {
+  top: 2px;
+  z-index: 9999;
 }
 
 .media-card a {
-  color: var(--black);
+  text-decoration: none;
+  color: var(--bs-black);
 }
 
-.media-card a:hover h3 {
-  text-decoration: underline;
+.media-card a:hover {
+  color: var(--bs-crete);
+}
+.media-card h3 {
+  margin: 0.5rem 0;
+}
+.media-card > p {
+  font-size: 0.8em;
+  line-height: 1.5;
+  color: var(--bs-grey-2);
 }

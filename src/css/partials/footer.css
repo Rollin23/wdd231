@@ -1,18 +1,26 @@
+/* footer styles */
+
 .park-footer {
-  background: #f4f1ea url("images/footer-bg.jpg") center / cover;
-  padding: 3rem 1rem;
+  background-image: url("../images/topo_pattern.png");
+  padding: 1.5rem;
 }
 
-.park-footer .contact {
-  max-width: 900px;
-  padding-left: 1rem;
+.park-footer h3 {
+  font-family: var(--bs-font-serif);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  margin-top: 0.5rem;
 }
 
-.park-footer h3,
 .park-footer h4 {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8em;
 }
 
 .park-footer p {
-  margin: 0.25rem 0;
+  font-size: 0.8em;
+  line-height: 1;
+  color: var(--bs-grey-2);
+  margin: 0.5rem 0;
 }
